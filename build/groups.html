@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/gif" href="./media/logo.PNG" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- <meta name="theme-color" content="#000000" /> -->
+    <!-- <meta name="description" content="Web site created using create-react-app" /> -->
+    <!-- <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" /> -->
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <!-- <link rel="manifest" href="%PUBLIC_URL%/manifest.json" /> -->
+
+    <title>Food Commune - Groups</title>
+
+    <!-- OKTA SDK -->
+    <script src="./js/okta-auth-js.min.js"></script>
+
+    <!-- FC style sheet -->
+    <link rel="stylesheet" href="./fcStyles.css" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Spartan:300,400,500,600,700&display=swap" rel="stylesheet">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Bootstrap 4 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/fe05a192cc.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.18.1/babel.min.js" crossorigin></script>
+    <!-- Load React. -->
+    <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react-router-dom/5.1.2/react-router-dom.js"
+        crossorigin></script>
+
+
+    <!-- DUMMY DATA -->
+    <script src="catalog-data.js"></script>
+
+
+    <style>
+        .blank-div {
+            background: #f1f1f1;
+            min-height: 32.4vh;
+            /* margin: 10px; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 5px;
+        }
+
+        .blank-div-foot {
+            background: #f1f1f1;
+            height: 15vh;
+            border-radius: 10px;
+            margin: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .group-list-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #f1f1f1;
+            border-radius: 5px 5px 0 0;
+            padding: 5px;
+        }
+
+        #list-wrapper {
+            background-color: lightgray;
+            border-radius: 0 0 5px 5px;
+            overflow-y: auto;
+            overflow-x: hidden;
+            height: 574px;
+            max-height: 574px;
+        }
+
+        .group-list-item {
+            align-items: center;
+            color: white;
+            cursor: pointer;
+            box-shadow: inset 0 0 0px 1px rgba(255, 255, 255, 0.53);
+            height: 65px;
+            transition: margin-bottom 400ms;
+        }
+
+        .group-list-item:hover {
+            background: orange !important;
+        }
+    </style>
+</head>
+
+<body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="wrapper" class="container-fluid">
+
+    </div>
+    <!-- Okta -->
+    <!-- <script src="okta.js"></script> -->
+
+
+    <!-- Nav -->
+    <script type="text/jsx" src="UserStatus.jsx"></script>
+    <script type="text/jsx" src="SignIn.jsx"></script>
+    <script type="text/jsx" src="CreateAccount.jsx"></script>
+    <script type="text/jsx" src="NavMenu.jsx"></script>
+    <script type="text/jsx" src="NavView.jsx"></script>
+    <!--  -->
+
+    <script type="text/jsx" src="SearchBar.jsx"></script>
+    <script type="text/jsx" src="GroupList.jsx"></script>
+    <script type="text/jsx" src="CreateGroup.jsx"></script>
+    <script type="text/jsx" src="GroupsView.jsx"></script>
+
+
+</body>
+
+</html>

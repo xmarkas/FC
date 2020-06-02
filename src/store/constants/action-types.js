@@ -1,0 +1,11 @@
+// UI
+export const OKTA_SESSION = "OKTA_SESSION";
+export const SET_SESSION = "SET_SESSION";
+export const EXPIRING_SESSION = "EXPIRING_SESSION";
+export const EXPIRE_REDIRECT = "EXPIRE_REDIRECT";
+export const CANCEL_SESSION = "CANCEL_SESSION";
+
+
+
+
+

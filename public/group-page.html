@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/gif" href="./media/logo.PNG" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- <meta name="theme-color" content="#000000" /> -->
+    <!-- <meta name="description" content="Web site created using create-react-app" /> -->
+    <!-- <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" /> -->
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <!-- <link rel="manifest" href="%PUBLIC_URL%/manifest.json" /> -->
+
+    <title>Food Commune</title>
+
+    <!-- OKTA SDK -->
+    <script src="./js/okta-auth-js.min.js"></script>
+
+    <!-- FC style sheet -->
+    <link rel="stylesheet" href="./fcStyles.css" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Spartan:300,400,500,600,700&display=swap" rel="stylesheet">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Bootstrap 4 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/fe05a192cc.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.18.1/babel.min.js" crossorigin></script>
+    <!-- Load React. -->
+    <!-- Note: when deploying, replace "development.js" with "production.min.js". -->
+    <script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+
+    <script src="catalog-data.js"></script>
+    <style>
+        body {
+            background: linear-gradient(159deg, #34680294 10%, #346802 72%, #34680294);
+            /* height: 100vh; */
+        }
+
+        #main-content {
+            align-self: center;
+
+        }
+
+
+        .button-group {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #mygroup-buys .card-header {
+            background: orange;
+            color: yellow;
+            /* justify-content: center; */
+        }
+
+        .group-buy-item {
+            min-height: 45px;
+            align-items: center;
+            color: white;
+            cursor: pointer;
+            outline: solid white thin;
+            font-size: small;
+            background-color: rgb(241, 241, 241);
+        }
+
+        .item-emph {
+            background-color: #28a745;
+            color: white;
+            padding: 7px;
+            border-radius: 3px;
+        }
+
+        .group-buy-item:hover {
+            background-color: #e9ecef;
+        }
+
+        #user-details {
+            font-size: small;
+        }
+
+        .stars {
+            margin: 0;
+        }
+
+        #edit:hover {
+            color: dodgerblue;
+        }
+
+        #visibility {
+            height: 25px;
+            border-radius: 5px;
+            /* outline-color: red; */
+            outline: none;
+            font-size: smaller;
+        }
+
+        #area {
+            height: 25px;
+            border-radius: 5px;
+            border-width: thin;
+            border-style: solid;
+            border-color: lightgrey;
+            text-align: center;
+            font-size: smaller;
+            color: black;
+        }
+
+        .fa-camera-retro {
+            color: dodgerblue;
+            position: absolute;
+            left: 20px;
+            cursor: pointer;
+        }
+
+        .group-news-item {
+            background: white;
+            padding: 3px;
+            border-radius: 5px;
+            font-style: oblique;
+        }
+
+        .sent-request {
+            background: #495057;
+            padding: 5px;
+            font-size: small;
+            border-radius: 5px;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="wrapper" class="container-fluid">
+        <!-- Content -->
+    </div>
+    <!-- Okta -->
+    <!-- <script src="okta.js"></script> -->
+
+    <!-- Nav -->
+    <script type="text/jsx" src="UserStatus.jsx"></script>
+    <script type="text/jsx" src="SignIn.jsx"></script>
+    <script type="text/jsx" src="CreateAccount.jsx"></script>
+    <script type="text/jsx" src="NavMenu.jsx"></script>
+    <script type="text/jsx" src="NavView.jsx"></script>
+    <!--  -->
+
+    <script type="text/jsx" src="MyGroupOrders.jsx"></script>
+    <script type="text/jsx" src="ItemViewOption.jsx"></script>
+    <script type="text/jsx" src="ItemView.jsx"></script>
+    <script type="text/jsx" src="MyGroupProfile.jsx"></script>
+    <script type="text/jsx" src="MyGroupBuys.jsx"></script>
+    <script type="text/jsx" src="MyGroupMemebers.jsx"></script>
+    <script type="text/jsx" src="MyGroupNews.jsx"></script>
+    <script type="text/jsx" src="MyGroupHeader.jsx"></script>
+    <script type="text/jsx" src="MyGroupPage.jsx"></script>
+
+
+</body>
+
+</html>

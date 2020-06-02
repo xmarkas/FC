@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/gif" href="./media/logo.PNG" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- <meta name="theme-color" content="#000000" /> -->
+    <!-- <meta name="description" content="Web site created using create-react-app" /> -->
+    <!-- <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" /> -->
+    <!--
+      manifest.json provides metadata used when your web app is installed on a
+      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
+    -->
+    <!-- <link rel="manifest" href="%PUBLIC_URL%/manifest.json" /> -->
+
+    <title>Food Commune - Login Help</title>
+
+    <!-- FC style sheet -->
+    <link rel="stylesheet" href="./fcStyles.css" />
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Spartan:300,400,500,600,700&display=swap" rel="stylesheet">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <!-- Bootstrap 4 -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+</head>
+
+<body style="background-color:#f1f1f1;">
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="wrapper" class="container-fluid">
+
+        <!-- Navigation -->
+        <div class="row" style="background-color: white;">
+            <nav class="navbar navbar-expand-md navbar-light" style="width: 100%;">
+                <a class="navbar-brand d-flex" href="./index.html">
+                    <img src="./media/foodCommuneLogo.gif" alt="">
+                </a>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+
+        <!-- ROW -->
+        <div id="main-content" class="row row-border justify-content-center py-5" style="position: relative;">
+            <div id="login-help" class="col spartan" style="display: block;">
+                <div class="row justify-content-center">Password Reset</div>
+                <div class="row py-4 justify-content-center">
+                    <div class="col-md-4">
+                        <div style="border-radius: 5px; padding: 20px; background-color: white;font-size: small;">
+                            <!-- email or phone number -->
+                            <div class="form-group">
+                                <label for="recover-input">Enter an email or phone number associated with the
+                                    account.</label>
+                                <input type="email" class="form-control" id="recover-input"
+                                    placeholder="email or phone">
+                                <small class="text-muted">Phone numbers do not require special characters ("-" or
+                                    "()")</small>
+                            </div>
+                            <button id="recover-go" class="btn btn-success">Reset</button>
+                            <div id="form-error" class="spartan pt-2"
+                                style="font-size: x-small; color: red; text-align: center;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="change-password" class="col spartan" style="display: none;">
+                <div class="row justify-content-center">Create New Password</div>
+                <div class="row py-4 justify-content-center">
+                    <div class="col-md-4">
+                        <div style="border-radius: 5px; padding: 20px; background-color: white;font-size: small;">
+                            <!-- password -->
+                            <div class="form-group">
+                                <label for="InputPassword1">Create Password</label>
+                                <div>
+                                    <small class="text-muted">Must be least 8 characters, a lowercase letter, an
+                                        uppercase letter, a
+                                        number,
+                                        no parts of your username.</small>
+                                </div>
+                                <input type="password" class="form-control" id="InputPassword1">
+                            </div>
+                            <!-- password verify-->
+                            <div class="form-group">
+                                <label for="InputPassword2">Re-type Password</label>
+                                <input type="password" class="form-control" id="InputPassword2">
+                            </div>
+                             <!-- Verificaiton code-->
+                             <div class="form-group">
+                                <label for="v-code">5-digit verification code</label>
+                                <div><small class="text-muted">Sent to phone number associated with your account.</small></div>
+                                <input type="text" class="form-control" id="v-code" style="width:100px">
+                            </div>
+                            <button id="set-password-go" class="btn btn-success">Change password</button>
+                            <div id="password-form-error" class="spartan pt-2"
+                                style="font-size: x-small; color: red; text-align: center;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Login help -->
+        <script src="reset.js"></script>
+</body>
+
+</html>
