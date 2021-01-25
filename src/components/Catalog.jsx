@@ -21,7 +21,7 @@ class Catalog extends Component {
                 className="m-2 p-2"
                 style={{ listStyle: "none" }}
               >
-                {this.props.userClans && this.props.data.Deals.map((item, index) => {
+                {this.props.data.Deals.map((item, index) => {
                   let target = item.description.toUpperCase();
                   if (target.includes(this.props.searchValue.toUpperCase())) {
                     return CatalogItem(item, index, this.props.userClans, this);
@@ -80,7 +80,7 @@ function CatalogItem(item, index, clans, self) {
         <div className="col-6 col-sm-4 col-md-3 mb-2 mb-md-0">
           {item.image_url && (
             <img
-              src={"/Uploads/Deal_Images/" + item.image_url}
+              src={"/Deal_Images/" + item.image_url}
               alt=""
               style={{ maxHeight: "100px", borderRadius: "5px" }}
             ></img>
@@ -102,7 +102,7 @@ function CatalogItem(item, index, clans, self) {
             <div className="item-seller mt-3">
               <img
                 className="seller-img"
-                src={"/Uploads/Profile_Images/" + item.seller_image}
+                src={"/Profile_Images/" + item.seller_image}
                 alt=""
               ></img>
               <div className="seller-name">
@@ -117,7 +117,7 @@ function CatalogItem(item, index, clans, self) {
         <div className="col-12 col-sm-5 col-md-6" style={{ display: "grid" }}>
           {item.summary}
           <div className="row" style={{ alignSelf: "flex-end",justifySelf: "flex-end"}}>
-            {CatalogActions(self.props.token, clans, self.props.user.id, item)}
+            {clans && CatalogActions(self.props.token, clans, self.props.user.id, item)}
           </div>
         </div>
       </div>
@@ -148,7 +148,7 @@ function catalogItem(item, index, user, props) {
       <div className="item-header">
         {item.image_url && (
           <img
-            src={"/Uploads/Deal_Images/" + item.image_url}
+            src={"/Deal_Images/" + item.image_url}
             alt=""
           ></img>
         )}
@@ -169,7 +169,7 @@ function catalogItem(item, index, user, props) {
           {item.seller_image && (
             <img
               className="seller-img"
-              src={"/Uploads/Profile_Images/" + item.seller_image}
+              src={"/Profile_Images/" + item.seller_image}
               alt=""
             ></img>
           )}

@@ -4,12 +4,12 @@ import { Link } from "react-router-dom";
 class MyGroups extends Component {
   state = {
     editGroup: false,
-    removeGroupSelector: null
+    removeGroupSelector: null,
   };
 
   changeState = () => {
     setTimeout(() => {
-      this.setState(prevState => {
+      this.setState((prevState) => {
         let groups = [...prevState.groups];
         groups.forEach((g, index) => {
           groups[index].members = 10;
@@ -19,7 +19,7 @@ class MyGroups extends Component {
     }, 2000);
   };
 
-  goToGroups = groupId => {
+  goToGroups = (groupId) => {
     if (groupId) {
       window.location.replace(`/group-page.html?ref=${groupId}`);
     } else {
@@ -55,7 +55,7 @@ class MyGroups extends Component {
               join a group
             </Link>
             <Link
-              to={"/groups?option=1"}
+              to={{ pathname: "/groups", query: { option: 1 } }}
               className="btn btn-sm btn-warning"
               style={{ font: "small-caption" }}
             >
@@ -77,16 +77,20 @@ class MyGroups extends Component {
                       className="row"
                       style={{
                         backgroundColor:
-                          index % 2 === 0 ? "dodgerblue" : "#adb5bd"
+                          index % 2 === 0 ? "dodgerblue" : "#adb5bd",
                       }}
                     >
-                      {(!this.state.removeGroupSelector || this.state.removeGroupSelector !== g.id) && (
+                      {(!this.state.removeGroupSelector ||
+                        this.state.removeGroupSelector !== g.id) && (
                         <Link
-                          to={"/grouppage?ref=" + g.id}
+                          to={{
+                            pathname: "/grouppage",
+                            query: { groupId: g.id },
+                          }}
                           className="col group-item d-flex"
                           style={{
                             font: "small-caption",
-                            textDecoration: "none"
+                            textDecoration: "none",
                           }}
                         >
                           <div className="col-2">
@@ -97,7 +101,7 @@ class MyGroups extends Component {
                               <div className="img-wrap-sm">
                                 <img
                                   style={{ width: "inherit" }}
-                                  src={`./Uploads/Group_Images/${g.image_url}`}
+                                  src={`/Group_Images/${g.image_url}`}
                                   alt=""
                                 ></img>
                               </div>
@@ -116,7 +120,7 @@ class MyGroups extends Component {
                               display: "flex",
                               alignItems: "center",
                               justifyContent: "center",
-                              height: "55px"
+                              height: "55px",
                             }}
                           >
                             Are you sure you want to leave {g.name}?
@@ -124,7 +128,7 @@ class MyGroups extends Component {
                           <div className="col d-flex justify-content-around align-items-center">
                             <button
                               className="btn btn-sm btn-danger"
-                              style={{fontSize:"smaller"}}
+                              style={{ fontSize: "smaller" }}
                               onClick={() =>
                                 this.setState({ removeGroupSelector: null })
                               }
@@ -132,7 +136,7 @@ class MyGroups extends Component {
                               cancel
                             </button>
                             <button
-                              style={{fontSize:"smaller"}}
+                              style={{ fontSize: "smaller" }}
                               className="btn btn-sm btn-success"
                               onClick={() => this.props.leaveGroup(g.id)}
                             >
@@ -147,13 +151,13 @@ class MyGroups extends Component {
                             padding: "5px",
                             display: "flex",
                             alignItems: "center",
-                            backgroundColor: "whitesmoke"
+                            backgroundColor: "whitesmoke",
                           }}
                         >
                           <button
                             style={{ fontSize: "x-small" }}
                             className="btn btn-sm btn-danger"
-                            onClick={ev => this.removeGroup(ev, g.id)}
+                            onClick={(ev) => this.removeGroup(ev, g.id)}
                           >
                             remove
                           </button>

@@ -173,12 +173,18 @@ class AddDeal extends Component {
                       id="category"
                       className="form-control form-control-sm"
                     >
-                      <option>Fruit</option>
+                      <option>Fresh Produce</option>
                       <option>Vegetables</option>
-                      <option>Spices and Stuff</option>
-                      <option>Chesse and Dairy</option>
+                      <option>Spices, Herbs & Seasonings</option>
+                      <option>Cheese, Eggs & Dairy</option>
                       <option>Meats and Poultry</option>
                       <option>Seafood</option>
+                      <option>Grains, Beans & Flour</option>
+                      <option>Coffee, Tea & Chocolate</option>
+                      <option>Nuts & Dried Fruit</option>
+                      <option>Fermented & Pickled Foods</option>
+                      <option>Specialty Foods</option>
+                      <option>Packaged & Canned Foods</option>
                     </select>
                   </div>
                 </div>

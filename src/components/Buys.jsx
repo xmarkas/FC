@@ -174,7 +174,7 @@ function buyItem(item, index, thisContext) {
         <div className="col-6 col-md-3 mb-2 mb-md-0">
           {item.image_url && (
             <img
-              src={"/Uploads/Deal_Images/" + item.image_url}
+              src={"/Deal_Images/" + item.image_url}
               alt=""
               style={{ maxHeight: "100px", borderRadius: "5px" }}
             ></img>
@@ -196,7 +196,7 @@ function buyItem(item, index, thisContext) {
             <div className="item-seller mt-3">
               <img
                 className="seller-img"
-                src={"/Uploads/Profile_Images/" + item.seller_image}
+                src={"/Profile_Images/" + item.seller_image}
                 alt=""
               ></img>
               <div className="seller-name">
@@ -214,6 +214,7 @@ function buyItem(item, index, thisContext) {
             className="row"
             style={{ alignSelf: "flex-end", justifySelf: "flex-end" }}
           >
+            {/* options for My Offers */}
             {thisContext.state.tab === 2 && !thisContext.state.removeDeal && (
               <div className="col d-flex">
                 {/* add to */}
@@ -260,6 +261,7 @@ function buyItem(item, index, thisContext) {
                 </button>
               </div>
             )}
+            {/* Options for wish list */}
             {thisContext.state.tab === 3 && (
               <div className="col">
                 {/* remove from wish list */}

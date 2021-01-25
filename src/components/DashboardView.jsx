@@ -15,8 +15,6 @@ const mapStateToProps = state => {
 
 class DashboardView extends Component {
   state = {
-    // token: null,
-    // user: null,
     data: null,
     showAddDeal: false,
     editDeal: null
@@ -25,7 +23,6 @@ class DashboardView extends Component {
   componentWillMount() {
     fetchData(this.props.token, this.props.user.id)
       .then(resolved => {
-        console.log(resolved);
         this.setState({ data: resolved });
       })
       .catch(err => {
@@ -36,7 +33,6 @@ class DashboardView extends Component {
   newDeal = payload => {
     insertDeal(this.props.token, this.props.user.id, payload)
       .then(resolved => {
-        console.log(resolved);
         this.setState(
           prevState => {
             let Deals = [...prevState.data.Deals];
@@ -58,7 +54,6 @@ class DashboardView extends Component {
   updateDeal = payload => {
     updateDealEdit(this.props.token, this.props.user.id, payload)
       .then(resolved => {
-        console.log(resolved);
         this.setState(
           prevState => {
             let Deals = [...prevState.data.Deals];
@@ -83,7 +78,6 @@ class DashboardView extends Component {
   removeDeal = payload => {
     removeDealDB(this.props.token, this.props.user.id, payload)
       .then(resolved => {
-        console.log(resolved);
         this.setState(
           prevState => {
             let Deals = [...prevState.data.Deals];
@@ -119,7 +113,6 @@ class DashboardView extends Component {
   updateProfile = payload => {
     updateUserProfile(this.props.token, this.props.user.id, payload)
       .then(resolved => {
-        console.log(resolved);
         this.setState(prevState => {
           let user = { ...prevState.user };
           let keys = Object.keys(payload);
@@ -157,14 +150,12 @@ class DashboardView extends Component {
   };
 
   removeFromWishList = (itemId) => {
-    console.log("wish list nix");
     removeItemFromWishList(
       this.props.token,
       this.props.user,
       itemId
     )
       .then(resolved => {
-        console.log(resolved);
         this.setState((prevState) => {
           let buys = [...prevState.data.Buys];
           let itemIndex = buys.findIndex(obj => obj.id === itemId);
@@ -230,7 +221,6 @@ class DashboardView extends Component {
 export default connect(mapStateToProps)(DashboardView);
 
 function fetchData(token, userid) {
-  console.log("fetching data......", token, userid);
   return new Promise((resolve, reject) => {
     let request = { userId: userid };
     let options = {
@@ -288,7 +278,6 @@ function insertDeal(token, userid, payload) {
 }
 
 function updateDealEdit(token, userid, payload) {
-  console.log("fetching data......", token, userid);
   payload.user_id = userid; // Append user_id to payload
   return new Promise((resolve, reject) => {
     let options = {
@@ -345,7 +334,6 @@ function removeDealDB(token, userid, payload) {
 
 function updateUserProfile(token, userid, payload) {
   let payloadObj = { userId: userid, values: payload };
-  console.log("fetching data......", token, userid);
   return new Promise((resolve, reject) => {
     let options = {
       method: "POST",
@@ -373,7 +361,6 @@ function updateUserProfile(token, userid, payload) {
 }
 
 function removeUserFromGroup(token, user, clanId) {
-  console.log("fetching data......");
   return new Promise((resolve, reject) => {
     let request = { user: user, clanId: clanId };
     let options = {
@@ -391,7 +378,6 @@ function removeUserFromGroup(token, user, clanId) {
         return res.json();
       })
       .then(res => {
-        console.log(res);
         if (res.success) {
           // Return to account detail and display error message
           resolve(res);
@@ -403,7 +389,6 @@ function removeUserFromGroup(token, user, clanId) {
 }
 
 function removeItemFromWishList(token, user, itemId) {
-  console.log("fetching data......");
   return new Promise((resolve, reject) => {
     let request = { user: user, itemId: itemId };
     let options = {
@@ -421,7 +406,6 @@ function removeItemFromWishList(token, user, itemId) {
         return res.json();
       })
       .then(res => {
-        console.log(res);
         if (res.success) {
           // Return to account detail and display error message
           resolve(res);

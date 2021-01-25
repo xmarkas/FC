@@ -140,7 +140,7 @@ class MyGroupProfile extends Component {
                 {!this.state.imgUpload && this.props.data.Clan[0].image_url && (
                   <div className="img-wrap-lg">
                     <img
-                      src={`./Uploads/Group_Images/${this.props.data.Clan[0].image_url}`}
+                      src={`/Group_Images/${this.props.data.Clan[0].image_url}`}
                       style={{ width: "inherit" }}
                     ></img>
                   </div>

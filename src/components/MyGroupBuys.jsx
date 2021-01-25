@@ -108,7 +108,7 @@ class MyGroupBuys extends Component {
                             <div className="col-2">
                               <img
                                 className="seller-img"
-                                src={"./Uploads/Deal_Images/" + b.image_url}
+                                src={"/Deal_Images/" + b.image_url}
                                 alt=""
                               />
                             </div>

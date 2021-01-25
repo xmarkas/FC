@@ -6,6 +6,7 @@ import MyGroupBuys from "./MyGroupBuys";
 import MyGroupMembers from "./MyGroupMemebers";
 import MyGroupNews from "./MyGroupNews";
 import { connect } from "react-redux";
+import { withRouter} from 'react-router-dom'
 
 /**
  * Roles: How user views are affected my their ROLE level
@@ -35,12 +36,12 @@ class MyGroupPage extends Component {
   };
 
   componentWillMount() {
-    let params = new URLSearchParams(window.location.search);
-    let ref = params.get("ref");
+    let query = this.props.history.location.query;
+    let groupId = query ? query.groupId : null;
+  
 
-    fetchData(this.props.token, this.props.user.id, ref)
+    fetchData(this.props.token, this.props.user.id, groupId)
       .then((resolved) => {
-        console.log(resolved);
         this.setState({ data: resolved });
 
         // Is User a Clan member?
@@ -84,7 +85,6 @@ class MyGroupPage extends Component {
   sendJoinRequest = () => {
     joinRequest(this.props.token, this.props.user, this.state.data.Clan[0].id)
       .then((resolved) => {
-        console.log(resolved);
         this.setState({ joinRequested: true });
       })
       .catch((err) => {
@@ -100,7 +100,6 @@ class MyGroupPage extends Component {
       memberState
     )
       .then((resolved) => {
-        console.log(resolved);
         if (memberState === 1) {
           this.setState((prevState) => {
             let data = { ...prevState.data };
@@ -128,8 +127,6 @@ class MyGroupPage extends Component {
       adminValue
     )
       .then((resolved) => {
-        console.log(resolved);
-
         this.setState((prevState) => {
           let data = { ...prevState.data };
           let memberIndex = data.Members.findIndex((obj) => {
@@ -148,8 +145,6 @@ class MyGroupPage extends Component {
   removeMember = (user_id) => {
     deleteMember(this.props.token, user_id, this.state.data.Clan[0].id)
       .then((resolved) => {
-        console.log(resolved);
-
         this.setState((prevState) => {
           let data = { ...prevState.data };
           let memberIndex = data.Members.findIndex((obj) => {
@@ -167,8 +162,6 @@ class MyGroupPage extends Component {
   updateClan = (payload) => {
     updateClanFields(this.props.token, this.state.data.Clan[0].id, payload)
       .then((resolved) => {
-        console.log(resolved);
-
         this.setState((prevState) => {
           let data = { ...prevState.data };
           let keys = Object.keys(payload);
@@ -187,7 +180,6 @@ class MyGroupPage extends Component {
   removeBuy = (dealId) => {
     deleteGroupBuy(this.props.token, this.state.data.Clan[0].id, dealId)
       .then((resolved) => {
-        console.log(resolved);
         console.log("BUY ID = ", dealId);
         this.setState((prevState) => {
           let data = { ...prevState.data };
@@ -207,7 +199,6 @@ class MyGroupPage extends Component {
   addNewNews = (message) => {
     insertNews(this.props.token, this.state.data.Clan[0].id, message)
       .then((resolved) => {
-        console.log(resolved);
         this.setState((prevState) => {
           let data = { ...prevState.data };
           data.News.unshift({ message: message });
@@ -247,7 +238,6 @@ class MyGroupPage extends Component {
         console.log(res);
         if (res.success) {
           // Return to account detail and display error message
-          console.log(res);
         } else {
           console.log("Unable to retrieve data");
         }
@@ -278,9 +268,7 @@ class MyGroupPage extends Component {
         return res.json();
       })
       .then((res) => {
-        console.log(res);
         if (res.success) {
-          console.log(res);
           this.setState((prevState) => {
             let data = { ...prevState.data };
             let target = data.Purchases.find((obj) => {
@@ -289,7 +277,6 @@ class MyGroupPage extends Component {
             if (target) {
               target.purchase_units = purchaseUnits;
             }
-
             return { data: data };
           });
         } else {
@@ -310,13 +297,6 @@ class MyGroupPage extends Component {
               <ItemView
                 modal={this.state.modal}
                 closeModal={this.closeModal}
-                // options={GroupPageActions(
-                //   this.state.token,
-                //   this.state.user.id,
-                //   this.state.data.Clan[0].id,
-                //   this.state.modal,
-                //   this.state.modalUpdate
-                // )}
               />
             )}
 
@@ -375,7 +355,7 @@ class MyGroupPage extends Component {
   }
 }
 
-export default connect(mapStateToProps)(MyGroupPage);
+export default connect(mapStateToProps)(withRouter(MyGroupPage));
 
 function fetchData(token, userid, ref) {
   console.log("fetching data......", token, userid);
@@ -396,7 +376,6 @@ function fetchData(token, userid, ref) {
         return res.json();
       })
       .then((res) => {
-        console.log(res);
         if (!res.success) {
           // Return to account detail and display error message
           resolve(res);
@@ -426,9 +405,7 @@ function joinRequest(token, user, clanId) {
         return res.json();
       })
       .then((res) => {
-        console.log(res);
         if (res.success) {
-          // Return to account detail and display error message
           resolve(res);
         } else {
           reject("Unable to retrieve data");
@@ -455,9 +432,7 @@ function handleMemberRequest(token, user, clanId, memberState) {
         return res.json();
       })
       .then((res) => {
-        console.log(res);
         if (res.success) {
-          // Return to account detail and display error message
           resolve(res);
         } else {
           reject("Unable to retrieve data");
@@ -484,9 +459,7 @@ function adminToggle(token, user, clanId, adminValue) {
         return res.json();
       })
       .then((res) => {
-        console.log(res);
         if (res.success) {
-          // Return to account detail and display error message
           resolve(res);
         } else {
           reject("Unable to retrieve data");
@@ -513,9 +486,7 @@ function deleteMember(token, user, clanId) {
         return res.json();
       })
       .then((res) => {
-        console.log(res);
         if (res.success) {
-          // Return to account detail and display error message
           resolve(res);
         } else {
           reject("Unable to retrieve data");
@@ -542,9 +513,7 @@ function updateClanFields(token, clanId, payload) {
         return res.json();
       })
       .then((res) => {
-        console.log(res);
         if (res.success) {
-          // Return to account detail and display error message
           resolve(res);
         } else {
           reject("Unable to retrieve data");
@@ -571,9 +540,7 @@ function deleteGroupBuy(token, clanId, dealId) {
         return res.json();
       })
       .then((res) => {
-        console.log(res);
         if (res.success) {
-          // Return to account detail and display error message
           resolve(res);
         } else {
           reject("Unable to retrieve data");
@@ -600,9 +567,7 @@ function insertNews(token, clanId, message) {
         return res.json();
       })
       .then((res) => {
-        console.log(res);
         if (res.success) {
-          // Return to account detail and display error message
           resolve(res);
         } else {
           reject("Unable to retrieve data");

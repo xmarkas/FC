@@ -137,7 +137,7 @@ class Profile extends Component {
                 {!this.state.imgUpload && this.props.user.image_url && (
                   <div className="img-wrap-lg">
                     <img
-                      src={`./Uploads/Profile_Images/${this.props.user.image_url}`}
+                      src={`/Profile_Images/${this.props.user.image_url}`}
                       style={{ width: "inherit" }}
                     ></img>
                   </div>

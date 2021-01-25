@@ -44,7 +44,7 @@ class Home extends Component {
               <div className="col-md-3">
                 <img
                   className="checks"
-                  src="http://www.foodcommune.com/about/img/about-check1.gif"
+                  // src="http://www.foodcommune.com/about/img/about-check1.gif"
                   alt=""
                 ></img>
 
@@ -55,7 +55,7 @@ class Home extends Component {
               <div className="col-md-3">
                 <img
                   className="checks"
-                  src="http://www.foodcommune.com/about/img/about-check1.gif"
+                  // src="http://www.foodcommune.com/about/img/about-check1.gif"
                 ></img>
                 <span className="indie-flower fc-green">
                   Community Involvement
@@ -64,14 +64,14 @@ class Home extends Component {
               <div className="col-md-3">
                 <img
                   className="checks"
-                  src="http://www.foodcommune.com/about/img/about-check1.gif"
+                  // src="http://www.foodcommune.com/about/img/about-check1.gif"
                 ></img>
                 <span className="indie-flower fc-green">Lower Food Costs</span>
               </div>
               <div className="col-md-3">
                 <img
                   className="checks"
-                  src="http://www.foodcommune.com/about/img/about-check1.gif"
+                  // src="http://www.foodcommune.com/about/img/about-check1.gif"
                 ></img>
                 <span className="indie-flower fc-green">Healthy Eating</span>
               </div>
@@ -83,7 +83,7 @@ class Home extends Component {
                 <img
                   className="img-inherit"
                   style={{ maxWidth: "775px", minWidth: "360px" }}
-                  src="./media/hderAd001.gif"
+                  src={require('../media/hderAd001.gif')}
                   alt=""
                 ></img>
               </div>

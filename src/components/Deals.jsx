@@ -80,7 +80,7 @@ function CatalogItem(item, index, user, thisContext) {
         ></div>
         {item.image_url && (
           <img
-            src={"/Uploads/Deal_Images/" + item.image_url}
+            src={"/Deal_Images/" + item.image_url}
             alt=""
           ></img>
         )}
@@ -97,7 +97,7 @@ function CatalogItem(item, index, user, thisContext) {
           {user.image_url && (
             <img
               className="seller-img"
-              src={"/Uploads/Profile_Images/" + user.image_url}
+              src={"/Profile_Images/" + user.image_url}
               alt=""
             ></img>
           )}

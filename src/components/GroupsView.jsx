@@ -3,57 +3,60 @@ import SearchBar from "./SearchBar";
 import GroupList from "./GroupList";
 import CreateGroup from "./CreateGroup";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     provisional: state.provisional,
     user: state.user,
-    token: state.token
+    token: state.token,
   };
 };
 
 class GroupsView extends Component {
   state = {
     searchInput: "",
-    showAddGroup: false
+    showAddGroup: false,
   };
 
   componentDidMount() {
-    let params = new URLSearchParams(window.location.search);
-    let option = params.get("option");
+    // Value passed from Router > Link
+    if (this.props.history.location.query) {
+      let option = this.props.history.location.query.option;
 
-    if (option) this.setState({ showAddGroup: true });
+      // If the option flag exist and is true open add group window
+      if (option) this.setState({ showAddGroup: true });
+    }
   }
 
   componentWillMount() {
     fetchData(this.props.token, this.props.user.id)
-      .then(resolved => {
+      .then((resolved) => {
         console.log(resolved);
         this.setState({ data: resolved });
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
       });
   }
 
-  onSearch = ev => {
+  onSearch = (ev) => {
     let value = ev.target.value;
-
     this.setState({ searchInput: value });
   };
 
-  addGroup = toggle => {
+  addGroup = (toggle) => {
     this.setState({ showAddGroup: this.state.showAddGroup ? false : true });
   };
 
-  newGroup = payload => {
+  newGroup = (payload) => {
     payload.user_id = this.props.user.id;
 
     insertGroup(this.props.token, payload)
-      .then(resolved => {
+      .then((resolved) => {
         console.log(resolved);
         this.setState({ showAddGroup: false });
-        this.setState(prevState => {
+        this.setState((prevState) => {
           let Clans = [...prevState.data.Clans];
           payload.admin_id = this.props.user.id;
           Clans.push(payload);
@@ -61,7 +64,7 @@ class GroupsView extends Component {
           return { data: data };
         });
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
       });
   };
@@ -91,7 +94,7 @@ class GroupsView extends Component {
   }
 }
 
-export default connect(mapStateToProps)(GroupsView);
+export default connect(mapStateToProps)(withRouter(GroupsView));
 
 function fetchData(token, userid) {
   console.log("fetching data......", token, userid);
@@ -101,17 +104,17 @@ function fetchData(token, userid) {
       method: "POST",
       headers: new Headers({
         Authorization: "Bearer " + token,
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       }),
       body: JSON.stringify({
-        entity: request
-      })
+        entity: request,
+      }),
     };
     fetch("/accounts/groups", options)
-      .then(res => {
+      .then((res) => {
         return res.json();
       })
-      .then(res => {
+      .then((res) => {
         if (!res.success) {
           // Return to account detail and display error message
           resolve(res);
@@ -129,17 +132,17 @@ function insertGroup(token, payload) {
       method: "POST",
       headers: new Headers({
         Authorization: "Bearer " + token,
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       }),
       body: JSON.stringify({
-        entity: payload
-      })
+        entity: payload,
+      }),
     };
     fetch("/accounts/createGroup", options)
-      .then(res => {
+      .then((res) => {
         return res.json();
       })
-      .then(res => {
+      .then((res) => {
         console.log(res);
         if (res.success) {
           // Return to account detail and display error message

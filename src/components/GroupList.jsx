@@ -58,12 +58,14 @@ export default GroupList;
 function GroupItem(item, index, thisContext) {
   return (
     <Link
-      to={"/grouppage?ref=" + item.id}
+      to={{
+        pathname: "/grouppage",
+        query: { groupId: item.id },
+      }}
       style={{ textDecoration: "none" }}
     >
       <div
         key={index}
-        // onClick={() => thisContext.goToClanPage(item.id)}
         className="row group-list-item"
         style={{ background: index % 2 ? "#346802" : "#343a40" }}
       >
@@ -72,7 +74,7 @@ function GroupItem(item, index, thisContext) {
           {item.image_url && (
             <div className="img-wrap-sm mr-1">
               <img
-                src={`./Uploads/Group_Images/${item.image_url}`}
+                src={`/Group_Images/${item.image_url}`}
                 style={{ width: "inherit" }}
               ></img>
             </div>

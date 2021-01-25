@@ -36,7 +36,7 @@ class MyGroupOrders extends Component {
           ></i>
           <img
             className="seller-img"
-            src={"./Uploads/Deal_Images/" + this.props.Buy.image_url}
+            src={"/Deal_Images/" + this.props.Buy.image_url}
             alt=""
           />
           <div>{this.props.Buy.description}</div>
@@ -58,7 +58,7 @@ class MyGroupOrders extends Component {
                     <div className="col-6">
                       <img
                         className="seller-img"
-                        src={"./Uploads/Profile_Images/" + b.user.image_url}
+                        src={"/Profile_Images/" + b.user.image_url}
                         alt=""
                       />
                       <span style={{ color: "dimgray" }}>

@@ -1,21 +1,21 @@
-import React, { Component } from 'react';
-import ItemView from './ItemView';
-import SearchBar from './SearchBar';
-import Catalog from './Catalog';
-import { CatalogActions } from './ItemViewOption';
+import React, { Component } from "react";
+import ItemView from "./ItemView";
+import SearchBar from "./SearchBar";
+import Catalog from "./Catalog";
+import { CatalogActions } from "./ItemViewOption";
 import { connect } from "react-redux";
 
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
   return {
     user: state.user,
-    token: state.token
+    token: state.token,
   };
 };
 
 class CatalogView extends Component {
   state = {
     searchInput: "",
-    modal: null
+    modal: null,
   };
 
   /**
@@ -24,32 +24,34 @@ class CatalogView extends Component {
   componentWillMount() {
     // Get catalog items
     let data = getCatalog()
-      .then(resolved => {
+      .then((resolved) => {
         console.log("DATAAA", resolved);
         this.setState({ data: resolved });
       })
-      .catch(err => {
+      .catch((err) => {
         console.log(err);
       });
-    
-    // Get user clans
-    getUserClans(this.props.token, this.props.user.id)
-        .then(resolved => {
+
+    if (this.props.user) {
+      // Get user clans
+      getUserClans(this.props.token, this.props.user.id)
+        .then((resolved) => {
           console.log(resolved);
           this.setState({ userClans: resolved.MyClans });
         })
-        .catch(err => {
+        .catch((err) => {
           console.log(err);
         });
+    }
   }
 
-  onSearch = ev => {
+  onSearch = (ev) => {
     let value = ev.target.value;
 
     this.setState({ searchInput: value });
   };
 
-  itemView = itemIndex => {
+  itemView = (itemIndex) => {
     console.log(itemIndex);
     this.setState({ modal: this.state.data.Deals[itemIndex] });
   };
@@ -100,14 +102,13 @@ function rndPlaceHolder() {
 function getCatalog() {
   return new Promise((resolve, reject) => {
     let options = {
-      method: "GET"
-      
+      method: "GET",
     };
     fetch("https://foodcommune.com/site/catalog", options)
-      .then(res => {
+      .then((res) => {
         return res.json();
       })
-      .then(res => {
+      .then((res) => {
         if (res) {
           console.log(res);
           resolve(res);
@@ -126,17 +127,17 @@ function getUserClans(token, userId) {
       method: "POST",
       headers: new Headers({
         Authorization: "Bearer " + token,
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       }),
       body: JSON.stringify({
-        entity: request
-      })
+        entity: request,
+      }),
     };
     fetch("/accounts/userClans", options)
-      .then(res => {
+      .then((res) => {
         return res.json();
       })
-      .then(res => {
+      .then((res) => {
         console.log(res);
         if (res) {
           // Return to account detail and display error message

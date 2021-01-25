@@ -5,29 +5,30 @@
  */
 import store from '../store/js/index';
 import { setSession, expiringSession, expireRedirect, cancelSession } from '../store/actions/index';
-// import OktaAuth from '@okta/okta-auth-js';
+import OktaAuth from '@okta/okta-auth-js';
 // let OktaAuth = require('@okta/okta-auth-js');
 
 
 
 console.log("running auth client..");
 // Okta browser SDK AuthClient
-// var config = {
-//     issuer: "https://dev-236245.okta.com/oauth2/default",
-//     clientId: "0oa4lqivbsKPbAtfs4x6",
-//     redirectUri: "https://qumoc.com/foodcommune",
-//     responseMode: "fragment",
-//     tokenManager: {
-//         storage: "sessionStorage"
-//     },
-//     // onSessionExpired: function () {
-//     //     console.log("re-authorization is required");
-//     //     // authClient.getWithRedirect();
-//     // }
-// };
+var config = {
+    issuer: "https://dev-236245.okta.com/oauth2/default",
+    clientId: "0oa4lqivbsKPbAtfs4x6", 
+    // cleintId: "0oae1w86zaoTFYPr54x6",
+    redirectUri: "https://foodcommune.com",
+    responseMode: "fragment",
+    tokenManager: {
+        storage: "sessionStorage"
+    },
+    // onSessionExpired: function () {
+    //     console.log("re-authorization is required");
+    //     // authClient.getWithRedirect();
+    // }
+};
 
 // AUTH CLIENT
-// let authClient = new OktaAuth(config);
+let authClient = new OktaAuth(config);
 
 
 export const session = async () => {
@@ -112,25 +113,25 @@ export const getToken = async (session) => {
 };
 
 export const signInAuthenticate = async (email, password) => {
-    // return await authClient
-    //     .signIn({
-    //         username: email,
-    //         password: password
-    //     })
-    //     .catch(err => {
-    //         // this.setState({ errMsg: "Email or password is incorrect!" });
-    //         console.log(err);
-    //         return false;
-    //     })
-    //     .then(res => {
-    //         console.log(res);
-    //         if (res.status === 'SUCCESS') {
-    //             getToken(res);
-    //             return true;
-    //         } else {
-    //             return false;
-    //         }
-    //     })
+    return await authClient
+        .signIn({
+            username: email,
+            password: password
+        })
+        .catch(err => {
+            // this.setState({ errMsg: "Email or password is incorrect!" });
+            console.log(err);
+            return false;
+        })
+        .then(res => {
+            console.log(res);
+            if (res.status === 'SUCCESS') {
+                getToken(res);
+                return true;
+            } else {
+                return false;
+            }
+        })
 }
 
 export const signOut = () => {

@@ -30,7 +30,7 @@ function App() {
         </div>
         <Switch>
           <Route path="/catalog"><Catalog /></Route>
-          <PrivateRoute path="/grouppage"><MyGroupPage /></PrivateRoute>
+          <PrivateRoute path="/grouppage/:testa?" testQ="dontgimmi"><MyGroupPage test="gimmi"/></PrivateRoute>
           <PrivateRoute path="/groups"><GroupsView /></PrivateRoute>
           <PrivateRoute path="/dashboard">
             <DashboardView />
@@ -51,12 +51,7 @@ export default App;
 // If user is not signed in redired to home page
 function PrivateRoute({ children, path, ref }) {
   let state = store.getState();
-  console.log(path)
-  console.log("STORE", store.getState())
   let auth = state.token && state.user ? true : false;
-
- 
-  console.log(ref);
 
   return auth ? (children) : (<Route>
     <Redirect to={{ pathname: "/signin" }} />

@@ -109,7 +109,7 @@ class UserStatus extends Component {
               {this.props.user.image_url && (
                 <div className="img-wrap-xs mr-1">
                   <img
-                    src={`/Uploads/Profile_Images/${this.props.user.image_url}`}
+                    src={`/Profile_Images/${this.props.user.image_url}`}
                     style={{ width: "inherit" }}
                   ></img>
                 </div>
